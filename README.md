@@ -1,6 +1,6 @@
 # NXP Diablo – Reinforcement Learning for Self-Balancing and Velocity Control
 
-This repository contains Deep Reinforcement Learning (RRL) training and evaluation code for **self-balancing** and **velocity-based locomotion control** of the **Diablo robot**, implemented using **NVIDIA Isaac Lab** and **RSL-RL (PPO)**.
+This repository contains Deep Reinforcement Learning (DRL) training and evaluation code for **self-balancing** and **velocity-based locomotion control** of the **Diablo robot**, implemented using **NVIDIA Isaac Lab** and **RSL-RL (PPO)**.
 
 The project focuses on achieving stable balancing behavior and controlled velocity movement through simulation-based reinforcement learning.
 
@@ -11,42 +11,42 @@ The project focuses on achieving stable balancing behavior and controlled veloci
 ```
 NXP-Diablo/
 ├── Part_gripper_col_rev/
+├── Evaluation/
 ├── agents/
+├── Model-Vx.pt/
+├── Model-Vxyw.pt/
 ├── centaur2_new_visual.usd
 ├── centaur2_v3_env_cfg.py
 ├── centaur2_v3_env_cfg_play.py
-└── model/
-```
+├── centaur2_v3_env_cfg_play_circular.py
+├── centaur2_v3_env_cfg_play_force.py
+├── centaur2_v3_env_cfg_play_inversed_sho_pitch.py
+├── centaur2_v3_env_cfg_play_sho_pitch.py
+├── centaur2_v3_env_cfg_play_square.py
+└── centaur2_v3_env_cfg_play_uneven.py
 
 ---
-
 ## 📂 Folder and File Description
 
-### `Part_gripper_col_rev/`
-Contains all robot parts used in the simulation, including:
-- Solidworks parts
-- STL mesh files
-- Inertia values generated based on the robot’s real-world mass properties
+### 🔹 Core Directories
+* **`Part_gripper_col_rev/`**: Contains all robot parts used in the simulation, including Solidworks parts, STL mesh files, and inertia values generated based on the robot’s real-world mass properties.
+* **`agents/`**: Contains reinforcement learning agent configurations. In this project, `rsl_rl_ppo_cfg` is used to achieve stable training results using PPO (Proximal Policy Optimization).
+* **`Evaluation/`**: Dedicated folder for storing evaluation logs, performance metrics, and analytical data from model testing.
+* **`model-Vx.pt/`**: Contains trained model specialized for linear velocity control in the X-axis ($V_x$).
+* **`Model-Vxyw.pt/`**: Contains trained model capable of handling multi-directional velocity and angular control ($V_x, V_y, \omega_z$).
 
-### `agents/`
-Contains reinforcement learning agent configurations.  
-In this project, **rsl_rl_ppo_cfg** is used to achieve more stable training results using PPO (Proximal Policy Optimization).
+### 🔹 Simulation Assets & Training Config
+* **`centaur2_new_visual.usd`**: The robot model in Universal Scene Description (USD) format, used as the main asset during reinforcement learning training and simulation.
+* **`centaur2_v3_env_cfg.py`**: The main Isaac Lab environment configuration file for training, defining observation/action spaces, reward functions, and physics parameters.
 
-### `centaur2_new_visual.usd`
-The robot model in USD format, used as the main asset during reinforcement learning training and simulation.
-
-### `centaur2_v3_env_cfg.py`
-The main Isaac Lab environment configuration file for reinforcement learning training, including:
-- Observation and action space
-- Reward design
-- Physics and control parameters
-
-### `centaur2_v3_env_cfg_play.py`
-Environment configuration used for running and evaluating the trained reinforcement learning model.
-
-### `model/`
-Contains trained reinforcement learning models.  
-Use **model_4999.pt** as the final checkpoint for testing and evaluation.
+### 🔹 Evaluation & Custom Play Configurations
+These files are variations of the environment config used to test the trained model's robustness under specific challenges:
+* **`centaur2_v3_env_cfg_play.py`**: Standard environment configuration for running and evaluating the model.
+* **`centaur2_v3_env_cfg_play_circular.py`**: Testing setup for evaluating circular path tracking.
+* **`centaur2_v3_env_cfg_play_force.py`**: Robustness evaluation under external push/force disturbances.
+* **`centaur2_v3_env_cfg_play_square.py`**: Testing setup for tracking a square trajectory.
+* **`centaur2_v3_env_cfg_play_uneven.py`**: Evaluation on rough, bumpy, or uneven terrain.
+* **`centaur2_v3_env_cfg_play_sho_pitch.py`** & **`_inversed_sho_pitch.py`**: Custom testing configurations analyzing the effects of standard and inverted shoulder pitch movements on the robot's balance.
 
 ---
 
@@ -58,13 +58,10 @@ Use **model_4999.pt** as the final checkpoint for testing and evaluation.
 - Python environment compatible with Isaac Lab
 - RSL-RL (PPO)
 
----
-
 ## 📥 Clone the Repository
 
 ```bash
-git clone https://github.com/NXP-Robots-Base-Hardware-Models/NXP-Diablo.git
-cd NXP-Diablo
+git clone https://github.com/.git](https://github.com/gerardjulian/skripsirl.git
 ```
 
 ---
@@ -85,7 +82,7 @@ cd NXP-Diablo
 ```bash
 ./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/play.py \
   --task=Centaur-Balancing2-v6-Play \
-  --checkpoint path_to_model_folder/model_4999.pt \
+  --checkpoint path_to_model_folder/Model-Vx.pt \
   --num_envs 10
 ```
 
