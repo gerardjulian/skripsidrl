@@ -61,7 +61,7 @@ These files are variations of the environment config used to test the trained mo
 ## 📥 Clone the Repository
 
 ```bash
-git clone https://github.com/.git](https://github.com/gerardjulian/skripsirl.git
+git clone https://github.com/.git](https://github.com/gerardjulian/skripsidrl.git
 ```
 
 ---
