@@ -1,6 +1,6 @@
-# NXP Diablo – Reinforcement Learning for Self-Balancing and Velocity Control
+# Deep Reinforcement Learning for Self-Balancing and Velocity Control
 
-This repository contains Deep Reinforcement Learning (DRL) training and evaluation code for **self-balancing** and **velocity-based locomotion control** of the **Diablo robot**, implemented using **NVIDIA Isaac Lab** and **RSL-RL (PPO)**.
+This repository contains Deep Reinforcement Learning (DRL) training and evaluation code for **self-balancing** and **velocity-based locomotion control** of the **Diablo robot with humanoid upper-body modification**, implemented using **NVIDIA Isaac Lab** and **RSL-RL (PPO)**.
 
 The project focuses on achieving stable balancing behavior and controlled velocity movement through simulation-based reinforcement learning.
 
@@ -9,7 +9,7 @@ The project focuses on achieving stable balancing behavior and controlled veloci
 ## 📁 Project Structure
 
 ```
-NXP-Diablo/
+skripsidrl/
 ├── Part_gripper_col_rev/
 ├── Evaluation/
 ├── agents/
